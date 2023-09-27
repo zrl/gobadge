@@ -1,0 +1,7 @@
+package main
+
+import "image/color"
+
+var logoRGBA_Animated = [][]color.RGBA{
+    {{.Str}},
+}

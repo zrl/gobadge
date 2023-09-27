@@ -32,3 +32,8 @@ flash-fosdem: prepare-fosdem perform-flash
 
 perform-flash:
 	tinygo flash -size short -target gobadge -ldflags="-X main.YourName='$(NAME)' -X main.YourTitleA1='$(TITLE1)' -X main.YourTitleA2='$(TITLE2)'" .
+
+prepare-skeletor:
+	go run cmd/main.go -conf=skeletor
+
+flash-skeletor: prepare-skeletor perform-flash

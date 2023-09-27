@@ -3,8 +3,10 @@ package main
 import (
 	"flag"
 	"fmt"
+	"strings"
 
 	"github.com/tinygo-org/gobadge/cmd/logos"
+	logos_animated "github.com/tinygo-org/gobadge/cmd/logos-animated"
 )
 
 const (
@@ -15,6 +17,7 @@ const (
 	fosdem23Logo      = "./cmd/assets/fosdem-2023.jpg"
 	kubeconEU23       = "./cmd/assets/kubecon-eu-2023.jpg"
 	tinygoLogo        = "./cmd/assets/tinygo.jpg"
+	skeletor          = "./cmd/assets/skeletor_100.gif"
 )
 
 func main() {
@@ -28,6 +31,10 @@ func main() {
 		return
 	}
 
+	if strings.HasSuffix(logo, ".gif") {
+		logos_animated.GenerateLogoRGBA_AnimatedFile(logo)
+		return
+	}
 	logos.GenerateLogoRGBAFile(logo)
 }
 
@@ -40,5 +47,6 @@ func confs() map[string]string {
 		"fosdem23":    fosdem23Logo,
 		"tinygo":      tinygoLogo,
 		"kubeconeu23": kubeconEU23,
+		"skeletor":    skeletor,
 	}
 }

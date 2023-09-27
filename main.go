@@ -2,9 +2,8 @@ package main
 
 import (
 	"image/color"
-	"machine"
-	"time"
 
+	"machine"
 	"tinygo.org/x/drivers/lis3dh"
 
 	"tinygo.org/x/drivers/ws2812"
@@ -69,29 +68,7 @@ func main() {
 	speaker.Configure(machine.PinConfig{Mode: machine.PinOutput})
 	speaker.High()
 
-	for {
-		switch menu() {
-		case 0:
-			Badge()
-			break
-		case 1:
-			snakeGame.Loop()
-			break
-		case 2:
-			Leds()
-			break
-		case 3:
-			Accel3D()
-			break
-		case 4:
-			Music()
-			break
-		default:
-			break
-		}
-		println("LOOP")
-		time.Sleep(1 * time.Second)
-	}
+	Badge()
 }
 
 func getRainbowRGB(i uint8) color.RGBA {
